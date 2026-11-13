@@ -7,7 +7,8 @@ export default defineConfig({
     server: {
         proxy: {
             '/api': {
-                target: "http://localhost:8080"
+                // Standard: Backend auf 8080. Für Tests überschreibbar mit BACKEND_URL.
+                target: process.env.BACKEND_URL ?? "http://localhost:8080"
             }
         }
     }

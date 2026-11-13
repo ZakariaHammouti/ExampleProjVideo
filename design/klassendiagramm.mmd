@@ -1,0 +1,87 @@
+classDiagram
+    direction LR
+
+    class Restaurant {
+        <<Document "restaurants">>
+        -String id
+        -String name
+        -String cuisine
+        -String address
+        -String city
+        -double rating
+        -int priceLevel
+        -double latitude
+        -double longitude
+        -boolean openNow
+    }
+
+    class NearbyResponse {
+        <<DTO>>
+        -double latitude
+        -double longitude
+        -String locationName
+        -String provider
+        -double radiusKm
+        -List~Place~ places
+    }
+
+    class Place {
+        <<DTO>>
+        -String id
+        -String name
+        -String cuisine
+        -String address
+        -String city
+        -double latitude
+        -double longitude
+        -double distanceKm
+        -String openingHours
+        -String website
+        -String source = "OSM"
+    }
+
+    class OverpassResponse {
+        <<record>>
+        +List~Element~ elements
+    }
+
+    class Element {
+        <<record>>
+        +String type
+        +long id
+        +Double lat
+        +Double lon
+        +Center center
+        +Map~String,String~ tags
+    }
+
+    class Center {
+        <<record>>
+        +double lat
+        +double lon
+    }
+
+    class NominatimResult {
+        <<record>>
+        +String lat
+        +String lon
+        +String displayName
+    }
+
+    class NominatimPlace {
+        <<record>>
+        +String osmType
+        +long osmId
+        +String name
+        +String lat
+        +String lon
+        +Map~String,String~ extratags
+        +Map~String,String~ address
+    }
+
+    NearbyResponse "1" *-- "0..50" Place : places
+    OverpassResponse "1" *-- "*" Element : elements
+    Element "1" *-- "0..1" Center : center
+    Element ..> Place : wird umgewandelt
+    NominatimPlace ..> Place : wird umgewandelt (Fallback)
+    NominatimResult ..> NearbyResponse : liefert Koordinaten
