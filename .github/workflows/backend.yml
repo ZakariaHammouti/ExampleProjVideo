@@ -1,4 +1,4 @@
-name: SonarQube
+name: Sonar Backend
 on:
   push:
     branches:
@@ -30,3 +30,4 @@ jobs:
           args: >
             -Dsonar.organization=zakariahammouti
             -Dsonar.projectKey=zakariahammouti_ExampleProjVideo_backend
+            -Dsonar.exclusions=frontend/**
