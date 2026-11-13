@@ -16,3 +16,5 @@
 /frontend/dist
 /frontend/dist-ssr
 /frontend/*.local
+#macOS
+.DS_Store
