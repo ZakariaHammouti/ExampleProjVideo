@@ -58,6 +58,7 @@
     </dependencies>
 
     <build>
+        <finalName>myApp</finalName>
         <plugins>
             <plugin>
                 <groupId>org.jacoco</groupId>
