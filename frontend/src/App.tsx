@@ -12,7 +12,7 @@ export default function App() {
         <div className="app">
             <header className="app-header">
                 <h1>🍽️ Restaurant Finder</h1>
-                <p>Finde gute Restaurants in deiner Nähe. Diese Änderungen sollten deployed werden</p>
+                <p>Finde gute Restaurants in deiner Nähe..Guten Hunger!</p>
             </header>
 
             <nav className="tabs">
